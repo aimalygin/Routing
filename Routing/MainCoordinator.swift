@@ -7,32 +7,35 @@ enum Screen {
     case third
 }
 
-struct MainCoordinator: View {
+struct MainCoordinator: View, Coordinator {
     
-    @State var routes: Routes<Screen> = [.root(.general, embedInNavigationView: true)]
-    
+    @StateObject var navigator = Navigator<Screen>(routes: [.root(.general, embedInNavigationView: true)])
+        
     var body: some View {
-        Router($routes) { screen, _ in
+        Router($navigator.routes) { screen, _ in
             switch screen {
             case .general:
-                ContentView {
-                    simulateDeeplink(animated: true)
+                let viewModel = ContentViewModel(navigator: navigator.flowNavigator) {
+                    simulateDeeplink(animated: false)
                 }
+                ContentView(viewModel: viewModel)
             case .second:
-                SecondView()
+                let viewModel = SecondViewModel(navigator: navigator.flowNavigator)
+                SecondView(viewModel: viewModel)
             case .third:
-                ThirdView()
+                let viewModel = ThirdViewModel(navigator: navigator.flowNavigator)
+                ThirdView(viewModel: viewModel)
             }
         }
     }
     
     private func simulateDeeplink(animated: Bool) {
         if animated {
-            $routes.withDelaysIfUnsupported { routes in
+            $navigator.routes.withDelaysIfUnsupported { routes in
                 routes = [.root(.general, embedInNavigationView: true), .push(.second), .sheet(.third)]
             }
         } else {
-            routes = [.root(.general, embedInNavigationView: true), .push(.second), .sheet(.third)]
+            navigator.routes = [.root(.general, embedInNavigationView: true), .push(.second), .sheet(.third)]
         }
     }
 }

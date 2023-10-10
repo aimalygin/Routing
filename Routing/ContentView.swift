@@ -1,31 +1,52 @@
 import SwiftUI
 import FlowStacks
 
-struct ContentView: View {
+class ContentViewModel: ObservableObject {
+    @Published var title: String = "Hello, world!"
+    @Published var secondButtonTitle: String = "Show Second View"
+    @Published var thirdButtonTitle: String = "Show Third View"
+    
+    var navigator: FlowNavigator<Screen>
     
     var simulateDeeplink: () -> Void
     
-    @EnvironmentObject var navigator: FlowNavigator<Screen>
+    init(navigator: FlowNavigator<Screen>, simulateDeeplink: @escaping () -> Void) {
+        self.navigator = navigator
+        self.simulateDeeplink = simulateDeeplink
+    }
     
+    @MainActor func showSecondView() {
+        navigator.push(.second)
+    }
+    
+    @MainActor func showThirdView() {
+        navigator.presentSheet(.third)
+    }
+}
+
+struct ContentView: View {
+        
+    @ObservedObject var viewModel: ContentViewModel
+        
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
-                Text("Hello, world!")
+                Text(viewModel.title)
                     .padding(.top, 5)
                     .padding(.bottom, 5)
                 
-                Button("Show Second View") {
-                    navigator.push(.second)
+                Button(viewModel.secondButtonTitle) {
+                    viewModel.showSecondView()
                 }
-                Button("Show Third View") {
-                    navigator.presentSheet(.third)
+                Button(viewModel.thirdButtonTitle) {
+                    viewModel.showThirdView()
                 }
                 
                 Button("Simulate deeplink") {
-                    simulateDeeplink()
+                    viewModel.simulateDeeplink()
                 }
             }
             .padding()
@@ -34,6 +55,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(simulateDeeplink: {})
-        .environmentObject(FlowNavigator(.constant([.root(Screen.general)])))
+    ContentView(viewModel: ContentViewModel(navigator: FlowNavigator(.constant([.root(Screen.general)])), simulateDeeplink: {}))
 }

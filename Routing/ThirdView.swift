@@ -1,21 +1,34 @@
 import SwiftUI
 import FlowStacks
 
+class ThirdViewModel: ObservableObject {
+    @Published var title: String = "Third View"
+    @Published var buttonTitle: String = "Close"
+    
+    var navigator: FlowNavigator<Screen>
+    
+    init(navigator: FlowNavigator<Screen>) {
+        self.navigator = navigator
+    }
+    
+    @MainActor
+    func close() {
+        navigator.dismiss()
+    }
+}
+
 struct ThirdView: View {
     
-    @EnvironmentObject var navigator: FlowNavigator<Screen>
+    @ObservedObject var viewModel: ThirdViewModel
     
     var body: some View {
-        Text("Third View")
-        Button("Close") {
-            navigator.dismiss()
+        Text(viewModel.title)
+        Button(viewModel.buttonTitle) {
+            viewModel.close()
         }
     }
 }
 
 #Preview {
-    ThirdView()
-        .environmentObject(
-            FlowNavigator(.constant([.root(Screen.general), .push(Screen.third)]))
-        )
+    ThirdView(viewModel: ThirdViewModel(navigator: FlowNavigator(.constant([.root(Screen.general), .push(Screen.third)]))))
 }

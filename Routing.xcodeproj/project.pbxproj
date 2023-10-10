@@ -15,6 +15,8 @@
 		04F0073B2AD49C2100E052CB /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0073A2AD49C2100E052CB /* ThirdView.swift */; };
 		04F0073E2AD4C59600E052CB /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 04F0073D2AD4C59600E052CB /* FlowStacks */; };
 		04F007402AD5243500E052CB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0073F2AD5243500E052CB /* MainCoordinator.swift */; };
+		04F007422AD54C5B00E052CB /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007412AD54C5B00E052CB /* Navigator.swift */; };
+		04F007442AD54C8900E052CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007432AD54C8900E052CB /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		04F007382AD49C1600E052CB /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		04F0073A2AD49C2100E052CB /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		04F0073F2AD5243500E052CB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		04F007412AD54C5B00E052CB /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		04F007432AD54C8900E052CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				04F0072A2AD4966300E052CB /* RoutingApp.swift */,
+				04F007412AD54C5B00E052CB /* Navigator.swift */,
+				04F007432AD54C8900E052CB /* Coordinator.swift */,
 				04F0073F2AD5243500E052CB /* MainCoordinator.swift */,
 				04F0072C2AD4966300E052CB /* ContentView.swift */,
 				04F007382AD49C1600E052CB /* SecondView.swift */,
@@ -159,6 +165,8 @@
 				04F0073B2AD49C2100E052CB /* ThirdView.swift in Sources */,
 				04F007402AD5243500E052CB /* MainCoordinator.swift in Sources */,
 				04F0072B2AD4966300E052CB /* RoutingApp.swift in Sources */,
+				04F007422AD54C5B00E052CB /* Navigator.swift in Sources */,
+				04F007442AD54C8900E052CB /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
