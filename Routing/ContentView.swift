@@ -1,17 +1,49 @@
 import SwiftUI
 import FlowStacks
 
+protocol DataProviderProtocol {
+    var title: String { get }
+    var secondButtonTitle: String { get }
+    var thirdButtonTitle: String { get }
+}
+
+struct DataProvider: DataProviderProtocol {
+    var title: String = "Hello, world!"
+    var secondButtonTitle: String = "Show Second View"
+    var thirdButtonTitle: String = "Show Third View"
+}
+
 class ContentViewModel: ObservableObject {
-    @Published var title: String = "Hello, world!"
-    @Published var secondButtonTitle: String = "Show Second View"
-    @Published var thirdButtonTitle: String = "Show Third View"
+    @Published var title: String
+    @Published var secondButtonTitle: String
+    @Published var thirdButtonTitle: String
     
-    var navigator: FlowNavigator<Screen>
-    
+    var navigator: FlowNavigator<Screen>    
     var simulateDeeplink: () -> Void
     
-    init(navigator: FlowNavigator<Screen>, simulateDeeplink: @escaping () -> Void) {
+    convenience init(
+        navigator: FlowNavigator<Screen>,
+        dataProvider: DataProviderProtocol,
+        simulateDeeplink: @escaping () -> Void
+    ) {
+        self.init(
+            navigator: navigator,
+            title: dataProvider.title,
+            secondButtonTitle: dataProvider.secondButtonTitle,
+            thirdButtonTitle: dataProvider.thirdButtonTitle,
+            simulateDeeplink: simulateDeeplink
+        )
+    }
+    
+    private init(navigator: FlowNavigator<Screen>,
+         title: String,
+         secondButtonTitle: String,
+         thirdButtonTitle: String,
+         simulateDeeplink: @escaping () -> Void) {
         self.navigator = navigator
+        self.title = title
+        self.secondButtonTitle = secondButtonTitle
+        self.thirdButtonTitle = thirdButtonTitle
         self.simulateDeeplink = simulateDeeplink
     }
     
@@ -55,5 +87,13 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(viewModel: ContentViewModel(navigator: FlowNavigator(.constant([.root(Screen.general)])), simulateDeeplink: {}))
+    ContentView(
+        viewModel: ContentViewModel(
+            navigator: FlowNavigator(.constant([.root(Screen.general)])),
+            dataProvider: DependencyProvider.shared.container.resolve(
+                DataProviderProtocol.self
+            )!,
+            simulateDeeplink: {}
+        )
+    )
 }

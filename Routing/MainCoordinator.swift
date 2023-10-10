@@ -8,25 +8,43 @@ enum Screen {
 }
 
 struct MainCoordinator: View, Coordinator {
-    
+    let dependencyProvider: DependencyProvider
     @StateObject var navigator = Navigator<Screen>(routes: [.root(.general, embedInNavigationView: true)])
         
     var body: some View {
         Router($navigator.routes) { screen, _ in
             switch screen {
             case .general:
-                let viewModel = ContentViewModel(navigator: navigator.flowNavigator) {
-                    simulateDeeplink(animated: false)
-                }
-                ContentView(viewModel: viewModel)
+                contentView
             case .second:
-                let viewModel = SecondViewModel(navigator: navigator.flowNavigator)
-                SecondView(viewModel: viewModel)
+                secondView
             case .third:
-                let viewModel = ThirdViewModel(navigator: navigator.flowNavigator)
-                ThirdView(viewModel: viewModel)
+                thirdView
             }
         }
+    }
+    
+    @ViewBuilder
+    var contentView: some View {
+        let dataProvider = dependencyProvider.container.resolve(DataProviderProtocol.self)!
+        let viewModel = ContentViewModel(
+            navigator: navigator.flowNavigator,
+            dataProvider: dataProvider) {
+                simulateDeeplink(animated: false)
+            }
+        ContentView(viewModel: viewModel)
+    }
+    
+    @ViewBuilder
+    var secondView: some View {
+        let viewModel = SecondViewModel(navigator: navigator.flowNavigator)
+        SecondView(viewModel: viewModel)
+    }
+    
+    @ViewBuilder
+    var thirdView: some View {
+        let viewModel = ThirdViewModel(navigator: navigator.flowNavigator)
+        ThirdView(viewModel: viewModel)
     }
     
     private func simulateDeeplink(animated: Bool) {

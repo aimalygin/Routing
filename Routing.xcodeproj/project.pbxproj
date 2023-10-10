@@ -17,6 +17,10 @@
 		04F007402AD5243500E052CB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0073F2AD5243500E052CB /* MainCoordinator.swift */; };
 		04F007422AD54C5B00E052CB /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007412AD54C5B00E052CB /* Navigator.swift */; };
 		04F007442AD54C8900E052CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007432AD54C8900E052CB /* Coordinator.swift */; };
+		04F007462AD54E9400E052CB /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007452AD54E9400E052CB /* MainAssembly.swift */; };
+		04F007492AD54EB400E052CB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 04F007482AD54EB400E052CB /* Swinject */; };
+		04F0074B2AD54EB400E052CB /* Swinject-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 04F0074A2AD54EB400E052CB /* Swinject-Dynamic */; };
+		04F0074D2AD554C400E052CB /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0074C2AD554C300E052CB /* DependencyProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,8 @@
 		04F0073F2AD5243500E052CB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		04F007412AD54C5B00E052CB /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		04F007432AD54C8900E052CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		04F007452AD54E9400E052CB /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
+		04F0074C2AD554C300E052CB /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +43,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F0074B2AD54EB400E052CB /* Swinject-Dynamic in Frameworks */,
 				04F0073E2AD4C59600E052CB /* FlowStacks in Frameworks */,
+				04F007492AD54EB400E052CB /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				04F0072A2AD4966300E052CB /* RoutingApp.swift */,
+				04F007452AD54E9400E052CB /* MainAssembly.swift */,
+				04F0074C2AD554C300E052CB /* DependencyProvider.swift */,
 				04F007412AD54C5B00E052CB /* Navigator.swift */,
 				04F007432AD54C8900E052CB /* Coordinator.swift */,
 				04F0073F2AD5243500E052CB /* MainCoordinator.swift */,
@@ -102,6 +112,8 @@
 			name = Routing;
 			packageProductDependencies = (
 				04F0073D2AD4C59600E052CB /* FlowStacks */,
+				04F007482AD54EB400E052CB /* Swinject */,
+				04F0074A2AD54EB400E052CB /* Swinject-Dynamic */,
 			);
 			productName = Routing;
 			productReference = 04F007272AD4966300E052CB /* Routing.app */;
@@ -133,6 +145,7 @@
 			mainGroup = 04F0071E2AD4966300E052CB;
 			packageReferences = (
 				04F0073C2AD4C59600E052CB /* XCRemoteSwiftPackageReference "FlowStacks" */,
+				04F007472AD54EB400E052CB /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 04F007282AD4966300E052CB /* Products */;
 			projectDirPath = "";
@@ -162,9 +175,11 @@
 			files = (
 				04F0072D2AD4966300E052CB /* ContentView.swift in Sources */,
 				04F007392AD49C1600E052CB /* SecondView.swift in Sources */,
+				04F007462AD54E9400E052CB /* MainAssembly.swift in Sources */,
 				04F0073B2AD49C2100E052CB /* ThirdView.swift in Sources */,
 				04F007402AD5243500E052CB /* MainCoordinator.swift in Sources */,
 				04F0072B2AD4966300E052CB /* RoutingApp.swift in Sources */,
+				04F0074D2AD554C400E052CB /* DependencyProvider.swift in Sources */,
 				04F007422AD54C5B00E052CB /* Navigator.swift in Sources */,
 				04F007442AD54C8900E052CB /* Coordinator.swift in Sources */,
 			);
@@ -380,6 +395,14 @@
 				minimumVersion = 0.3.4;
 			};
 		};
+		04F007472AD54EB400E052CB /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -387,6 +410,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04F0073C2AD4C59600E052CB /* XCRemoteSwiftPackageReference "FlowStacks" */;
 			productName = FlowStacks;
+		};
+		04F007482AD54EB400E052CB /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F007472AD54EB400E052CB /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		04F0074A2AD54EB400E052CB /* Swinject-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F007472AD54EB400E052CB /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = "Swinject-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
