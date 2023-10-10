@@ -10,13 +10,13 @@ class Navigator<Screen>: ObservableObject {
     }
     
     @MainActor
-    var flowNavigator: FlowNavigator<Screen> {
+    lazy var flowNavigator: FlowNavigator<Screen> = {
         let binding = Binding(
-            get: {
+            get: { [unowned self] in
                 self.routes
-            }, set: {
+            }, set: { [unowned self] in
                 self.routes = $0
             })
         return FlowNavigator(binding)
-    }
+    }()
 }

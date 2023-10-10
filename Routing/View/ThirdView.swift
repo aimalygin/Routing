@@ -7,7 +7,7 @@ struct ThirdView: View {
     
     var body: some View {
         Text(viewModel.title)
-        Button(viewModel.buttonTitle) {
+        Button(viewModel.buttonTitle) { [unowned viewModel] in
             viewModel.close()
         }
     }

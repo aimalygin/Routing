@@ -1,5 +1,6 @@
 import SwiftUI
 import FlowStacks
+import Swinject
 
 enum Screen {
     case general
@@ -8,8 +9,16 @@ enum Screen {
 }
 
 struct MainCoordinator: View, Coordinator {
-    let dependencyProvider: DependencyProvider
-    @StateObject var navigator = Navigator<Screen>(routes: [.root(.general, embedInNavigationView: true)])
+    let container: Container
+    @StateObject var navigator: Navigator<Screen>
+    
+    init(
+        container: Container,
+        navigator: Navigator<Screen> = Navigator<Screen>(routes: [.root(.general, embedInNavigationView: true)])
+    ) {
+        self.container = container
+        _navigator = StateObject(wrappedValue: navigator)
+    }
         
     var body: some View {
         Router($navigator.routes) { screen, _ in
@@ -25,23 +34,26 @@ struct MainCoordinator: View, Coordinator {
     }
     
     @ViewBuilder
+    @MainActor
     var contentView: some View {
-        let dataProvider = dependencyProvider.container.resolve(DataProviderProtocol.self)!
+        let dataProvider = container.resolve(DataProviderProtocol.self)!
         let viewModel = ContentViewModel(
             navigator: navigator.flowNavigator,
             dataProvider: dataProvider) {
-                simulateDeeplink(animated: false)
+                self.simulateDeeplink(animated: false)
             }
         ContentView(viewModel: viewModel)
     }
     
     @ViewBuilder
+    @MainActor
     var secondView: some View {
         let viewModel = SecondViewModel(navigator: navigator.flowNavigator)
         SecondView(viewModel: viewModel)
     }
     
     @ViewBuilder
+    @MainActor
     var thirdView: some View {
         let viewModel = ThirdViewModel(navigator: navigator.flowNavigator)
         ThirdView(viewModel: viewModel)

@@ -6,11 +6,10 @@ struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel
         
     var body: some View {
-        NavigationView {
+        NavigationView { [unowned viewModel] in
             VStack(spacing: 10) {
                 Image(systemName: "globe")
                     .imageScale(.large)
-                    .foregroundStyle(.tint)
                 Text(viewModel.title)
                     .padding(.top, 5)
                     .padding(.bottom, 5)

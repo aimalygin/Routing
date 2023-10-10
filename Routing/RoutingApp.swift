@@ -5,7 +5,7 @@ import FlowStacks
 struct RoutingApp: App {
     var body: some Scene {
         WindowGroup {
-            MainCoordinator(dependencyProvider: DependencyProvider.shared)
+            DependencyProvider.shared.container.resolve(MainCoordinator.self)!
         }
     }
 }
