@@ -21,6 +21,11 @@
 		04F007492AD54EB400E052CB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 04F007482AD54EB400E052CB /* Swinject */; };
 		04F0074B2AD54EB400E052CB /* Swinject-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 04F0074A2AD54EB400E052CB /* Swinject-Dynamic */; };
 		04F0074D2AD554C400E052CB /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0074C2AD554C300E052CB /* DependencyProvider.swift */; };
+		04F007502AD556B700E052CB /* DataProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0074F2AD556B700E052CB /* DataProviderProtocol.swift */; };
+		04F007522AD556CA00E052CB /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007512AD556CA00E052CB /* DataProvider.swift */; };
+		04F007552AD5570900E052CB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007542AD5570900E052CB /* ContentViewModel.swift */; };
+		04F007572AD5572E00E052CB /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007562AD5572E00E052CB /* SecondViewModel.swift */; };
+		04F007592AD5574700E052CB /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007582AD5574700E052CB /* ThirdViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		04F007432AD54C8900E052CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		04F007452AD54E9400E052CB /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		04F0074C2AD554C300E052CB /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
+		04F0074F2AD556B700E052CB /* DataProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderProtocol.swift; sourceTree = "<group>"; };
+		04F007512AD556CA00E052CB /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		04F007542AD5570900E052CB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		04F007562AD5572E00E052CB /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
+		04F007582AD5574700E052CB /* ThirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +87,8 @@
 				04F007412AD54C5B00E052CB /* Navigator.swift */,
 				04F007432AD54C8900E052CB /* Coordinator.swift */,
 				04F0073F2AD5243500E052CB /* MainCoordinator.swift */,
-				04F0072C2AD4966300E052CB /* ContentView.swift */,
-				04F007382AD49C1600E052CB /* SecondView.swift */,
-				04F0073A2AD49C2100E052CB /* ThirdView.swift */,
+				04F007532AD556F200E052CB /* View */,
+				04F0074E2AD556A300E052CB /* Model */,
 				04F0072E2AD4966700E052CB /* Assets.xcassets */,
 				04F007302AD4966700E052CB /* Preview Content */,
 			);
@@ -92,6 +101,28 @@
 				04F007312AD4966700E052CB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		04F0074E2AD556A300E052CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04F0074F2AD556B700E052CB /* DataProviderProtocol.swift */,
+				04F007512AD556CA00E052CB /* DataProvider.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04F007532AD556F200E052CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04F0072C2AD4966300E052CB /* ContentView.swift */,
+				04F007542AD5570900E052CB /* ContentViewModel.swift */,
+				04F007382AD49C1600E052CB /* SecondView.swift */,
+				04F007562AD5572E00E052CB /* SecondViewModel.swift */,
+				04F0073A2AD49C2100E052CB /* ThirdView.swift */,
+				04F007582AD5574700E052CB /* ThirdViewModel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,9 +209,14 @@
 				04F007462AD54E9400E052CB /* MainAssembly.swift in Sources */,
 				04F0073B2AD49C2100E052CB /* ThirdView.swift in Sources */,
 				04F007402AD5243500E052CB /* MainCoordinator.swift in Sources */,
+				04F007522AD556CA00E052CB /* DataProvider.swift in Sources */,
+				04F007572AD5572E00E052CB /* SecondViewModel.swift in Sources */,
 				04F0072B2AD4966300E052CB /* RoutingApp.swift in Sources */,
 				04F0074D2AD554C400E052CB /* DependencyProvider.swift in Sources */,
+				04F007552AD5570900E052CB /* ContentViewModel.swift in Sources */,
+				04F007592AD5574700E052CB /* ThirdViewModel.swift in Sources */,
 				04F007422AD54C5B00E052CB /* Navigator.swift in Sources */,
+				04F007502AD556B700E052CB /* DataProviderProtocol.swift in Sources */,
 				04F007442AD54C8900E052CB /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
