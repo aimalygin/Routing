@@ -11,6 +11,10 @@
 		04F0072D2AD4966300E052CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0072C2AD4966300E052CB /* ContentView.swift */; };
 		04F0072F2AD4966700E052CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F0072E2AD4966700E052CB /* Assets.xcassets */; };
 		04F007322AD4966700E052CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F007312AD4966700E052CB /* Preview Assets.xcassets */; };
+		04F007392AD49C1600E052CB /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F007382AD49C1600E052CB /* SecondView.swift */; };
+		04F0073B2AD49C2100E052CB /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0073A2AD49C2100E052CB /* ThirdView.swift */; };
+		04F0073E2AD4C59600E052CB /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 04F0073D2AD4C59600E052CB /* FlowStacks */; };
+		04F007402AD5243500E052CB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0073F2AD5243500E052CB /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		04F0072C2AD4966300E052CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04F0072E2AD4966700E052CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04F007312AD4966700E052CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04F007382AD49C1600E052CB /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		04F0073A2AD49C2100E052CB /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		04F0073F2AD5243500E052CB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F0073E2AD4C59600E052CB /* FlowStacks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +60,10 @@
 			isa = PBXGroup;
 			children = (
 				04F0072A2AD4966300E052CB /* RoutingApp.swift */,
+				04F0073F2AD5243500E052CB /* MainCoordinator.swift */,
 				04F0072C2AD4966300E052CB /* ContentView.swift */,
+				04F007382AD49C1600E052CB /* SecondView.swift */,
+				04F0073A2AD49C2100E052CB /* ThirdView.swift */,
 				04F0072E2AD4966700E052CB /* Assets.xcassets */,
 				04F007302AD4966700E052CB /* Preview Content */,
 			);
@@ -83,6 +94,9 @@
 			dependencies = (
 			);
 			name = Routing;
+			packageProductDependencies = (
+				04F0073D2AD4C59600E052CB /* FlowStacks */,
+			);
 			productName = Routing;
 			productReference = 04F007272AD4966300E052CB /* Routing.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 04F0071E2AD4966300E052CB;
+			packageReferences = (
+				04F0073C2AD4C59600E052CB /* XCRemoteSwiftPackageReference "FlowStacks" */,
+			);
 			productRefGroup = 04F007282AD4966300E052CB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F0072D2AD4966300E052CB /* ContentView.swift in Sources */,
+				04F007392AD49C1600E052CB /* SecondView.swift in Sources */,
+				04F0073B2AD49C2100E052CB /* ThirdView.swift in Sources */,
+				04F007402AD5243500E052CB /* MainCoordinator.swift in Sources */,
 				04F0072B2AD4966300E052CB /* RoutingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +362,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04F0073C2AD4C59600E052CB /* XCRemoteSwiftPackageReference "FlowStacks" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnpatrickmorgan/FlowStacks";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04F0073D2AD4C59600E052CB /* FlowStacks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F0073C2AD4C59600E052CB /* XCRemoteSwiftPackageReference "FlowStacks" */;
+			productName = FlowStacks;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04F0071F2AD4966300E052CB /* Project object */;
 }
